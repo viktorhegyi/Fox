@@ -40,7 +40,7 @@ public class MainController {
     m.addObject("fox", fox);
     fox.setActualFood(food);
     fox.setActualDrink(drink);
-    m.setViewName("/index");
+    m.setViewName("index");
     return m;
   }
 
@@ -48,7 +48,7 @@ public class MainController {
   public ModelAndView trickCenter() {
     ModelAndView m = modelAndViewFactory.getModelAndView();
     m.addObject("fox", fox);
-    m.setViewName("/trickCenter");
+    m.setViewName("trickCenter");
     return m;
   }
 
