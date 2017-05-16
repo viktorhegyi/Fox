@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Tamagoci</title>
+</head>
+<body>
+<ul>
+  <li><a th:href="@{'/'}">Information</a></li>
+  <li><a th:href="@{'/nutritionStore'}">Nutrition Store</a></li>
+  <li><a th:href="@{'/trickCenter'}">Trick Center</a></li>
+</ul>
+<table>
+  <!--/*@thymesVar id="fox" type="com.greenfox.tamagoci.models.Fox"*/-->
+  <block th:if="${fox.getListOfTricksToLearn().size() == 0}">
+    <span >Nothing to learn. Add new tricks to learn</span>
+  </block>
+  <block th:if="${fox.getListOfTricksToLearn().size() != 0}">
+    <form action="/addTricks">
+      <span th:text="'Tricks'"></span>
+      <select name="trick">
+        <option th:each="trick : ${fox.listOfTricksToLearn}"
+                th:value="${trick}"
+                th:text="${trick}">
+        </option>
+      </select>
+      <input type="submit" value="Learn"/>
+    </form>
+  </block>
+</table>
+
+<table>
+  <form action="/addNewTricks">
+    <span th:text="'Add new trick:'"></span>
+    <input text="" name="trick"/>
+    <input type="submit" value="Add"/>
+  </form>
+</table>
+</body>
+</html>
